@@ -1,7 +1,7 @@
 require 'gossip'
 
 class ApplicationController < Sinatra::Base
-  #prend les caracteristiques de Sinatra
+  #hérita de la clase Sinatra::Base
   
   get '/' do
     erb :index, locals: {gossips: Gossip.all}
@@ -21,8 +21,13 @@ class ApplicationController < Sinatra::Base
   	erb :show, locals: {gossip: Gossip.find(params['id'])}
   end
 
-	post '/gossips/:id/edit/' do
-  	Gossip.update(params["modified_author"], params["modified_content"], params['id'])	
+  get '/gossips/:id/edit' do
+  	erb :edit, locals: {gossip: Gossip.find(params['id'])}
+  end
+
+  post '/gossips/:id/edit/' do
+    #modifie un gossip en fonction de params
+    Gossip.update(params["modified_author"], params["modified_content"], params['id'])	
 		redirect '/'
 	end
 

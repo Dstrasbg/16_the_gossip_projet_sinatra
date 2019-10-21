@@ -6,11 +6,12 @@
     <h1>Mon super site de gossip, depuis le dossier views !</h1>
     <p>
     <h3>Pour ajouter un gossip <a href="/gossips/new/"> Clique ici </a></h3>
-
-    <% gossips.each do |gossip| %>
+    
+    <p> Voici les potins:
+    <% gossips.each_with_index do |gossip, index| %>
       <p>
-        <%= gossip.author %><br/>
-        <%= gossip.content %>
+        <%= gossip.author %><br/> a dit 
+        <%= gossip.content %>, page du page du <a href="/gossips/<%=index+1%>/">gossip n°<%=index+1%></a>
       </p>
     <% end %>
   

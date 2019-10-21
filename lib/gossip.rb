@@ -1,11 +1,10 @@
 class Gossip
   
-  attr_accessor :author, :content, :id #habilité à lire et écrire
+  attr_accessor :author, :content, :all_gossips, :modified_author, :modified_content  #habilité à lire et écrire
 
   def initialize(author,content)
     @author = author
     @content = content
-    
   end
   
   def save
@@ -15,7 +14,7 @@ class Gossip
   end
 
   def self.all
-    all_gossips = []# va chercher chacune des lignes du csv do
+    @all_gossips = []# va chercher chacune des lignes du csv do
     CSV.read("./db/gossip.csv").each do |csv_line| # crée un gossip avec les infos de la ligne
       @all_gossips << Gossip.new(csv_line[0], csv_line[1])# all_gossips << gossip qui vient d'être créé
     end
@@ -27,6 +26,8 @@ class Gossip
   end
   
   def self.update(modified_author, modified_content, id)
+    @modified_author = modified_author
+    @modified_content = modified_content
 		modified_gossips = Gossip.all
 		CSV.open("./db/gossip.csv", 'w') 
 		modified_gossips[id.to_i-1].author = modified_author

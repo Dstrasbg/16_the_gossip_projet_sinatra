@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Editer un potin</title>
+  </head>
+  <body>
+    <p>
+    <h2>Edite un potin !</h2>
+    <p>Tu es sur le point de modifier le potin n°<%=params['id']%>, via le formulaire ci-dessous</p>
+    <form action='/gossips/new/' method='POST'>
+      Modifier le nom :  <input type='text' name='modified_author'/><br/>
+      Modifier le contenu : <input type='text' name='modified_content'/><br/>
+      <input type='submit'/>
+    </form>
+    <p><h4>Pour revenir à la page d'accueil, clique <a href="/">ICI</a></h4>
+  </body>
+</html>
