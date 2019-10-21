@@ -4,3 +4,7 @@ gem 'rubocop', '~> 0.57.2'
 gem 'rspec'
 gem 'pry'
 gem 'sinatra'
+gem 'shotgun'
+gem 'csv'
+
+#faire un $bundle install
